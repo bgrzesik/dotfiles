@@ -2,23 +2,34 @@ syntax on
 
 set visualbell
 
-set tabstop=4
+set tabstop=8
+set softtabstop=0
+set expandtab
 set shiftwidth=4
-set autoindent
-set smartindent
 set smarttab
 set cindent
 
 set number
+set relativenumber
 
 set laststatus=2
 set backspace=2
 
+set nobackup
+set nowb
+set noswapfile
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 if has("gui_running")
-	color torte
+    color torte
 else
-	color desert
+    color desert
 endif
+
 set cursorline
 hi CursorLine term=bold cterm=bold gui=bold,underline guibg=NONE
 
@@ -34,13 +45,23 @@ au BufRead,BufNewFile *.h syn match cType "\vstruct\s+[a-zA-Z0-9_]+"
 au BufRead,BufNewFile *.h syn clear cStructure
 au BufRead,BufNewFile *.h syn match cType "\vstruct\s*\{" contained
 
-set nobackup
-set nowb
-set noswapfile
-
 set guifont=Lucida_Console:h11
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
+if 0
+    filetype off
+
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+        Plugin 'VundleVim/Vundle.vim'
+        Plugin 'rust-lang/rust.vim'
+        Plugin 'cespare/vim-toml'
+        Plugin 'Valloric/YouCompleteMe'
+    call vundle#end()
+
+    filetype plugin indent on
+    let g:ycm_rust_src_path = "~/.cargo/src/rust-std/"
+endif 
