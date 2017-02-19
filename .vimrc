@@ -24,6 +24,9 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+set encoding=utf-8  " The encoding displayed.
+set fileencoding=utf-8  " The encoding written to file.
+
 if has("gui_running")
     color torte
 else
@@ -51,7 +54,7 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-if 0
+if 1
     filetype off
 
     set rtp+=~/.vim/bundle/Vundle.vim
@@ -59,9 +62,11 @@ if 0
         Plugin 'VundleVim/Vundle.vim'
         Plugin 'rust-lang/rust.vim'
         Plugin 'cespare/vim-toml'
-        Plugin 'Valloric/YouCompleteMe'
+        if has('python')
+            Plugin 'Valloric/YouCompleteMe'
+        endif
     call vundle#end()
 
     filetype plugin indent on
-    let g:ycm_rust_src_path = "~/.cargo/src/rust-std/"
 endif 
+
