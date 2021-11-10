@@ -72,6 +72,17 @@ autocmd Syntax c syn match cType "typedef"
 autocmd Syntax c syn match cConstant "\v\w@<!(\u|_+[A-Z0-9])[A-Z0-9_]*\w@!"
 autocmd Syntax c syn keyword cStatement sizeof
 
+autocmd Syntax cpp syn match cCustomParen "(" contains=cParen,cCppParen
+autocmd Syntax cpp syn match cCustomFunc "\w\+\s*(" contains=cCustomParen
+autocmd Syntax cpp syn match cCustomScope "::"
+autocmd Syntax cpp syn match cCustomClass "\w\+\s*::" contains=cCustomScope
+autocmd Syntax cpp syn match cCustomClassName "\(^class\s\)\@<=\w\+"
+
+autocmd Syntax cpp hi def link cCustomFunc Function
+autocmd Syntax cpp hi def link cCustomClass Function
+autocmd Syntax cpp hi def link cCustomClassName Function
+autocmd Syntax cpp set colorcolumn=120
+
 cscope add cscope.out
 
 if 1
