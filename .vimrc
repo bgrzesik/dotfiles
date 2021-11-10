@@ -102,7 +102,8 @@ if 1
       nmap <Leader>g <Plug>(YCMHover)
   nnoremap <Leader>n :YcmCompleter GetDoc<CR>
   nnoremap <Leader>d :YcmCompleter GoTo<CR>
-  nnoremap <Leader>D :YcmCompleter GoToImplementationElseDeclaration<CR>
+  nnoremap <Leader>i :YcmCompleter GoToImplementation<CR>
+  nnoremap <Leader>D :YcmCompleter GoToDeclaration<CR>
   nnoremap <Leader>f :YcmCompleter GoToInclude<CR>
   nnoremap <Leader>r :YcmCompleter GoToReferences<CR>
 endif
