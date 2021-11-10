@@ -3,6 +3,7 @@ filetype plugin indent on
 syntax on
 
 colorscheme ron
+set visualbell
 set backspace=indent,eol,start
 set laststatus=2
 set fileformat=unix
@@ -12,6 +13,7 @@ set numberwidth=6
 set colorcolumn=80
 set hlsearch
 
+set shiftwidth=4
 set tabstop=4
 set expandtab
 
