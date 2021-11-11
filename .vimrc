@@ -66,6 +66,7 @@ set listchars=tab:¦\ ,trail:•,space:‧,extends:⟩,precedes:⟨
 "autocmd BufNewFile,BufRead *.h setlocal filetype=c
 "autocmd BufNewFile,BufRead *.m setlocal filetype=c
 autocmd BufNewFile,BufRead *.h setlocal filetype=cpp
+autocmd BufNewFile,BufRead *.inc setlocal filetype=cpp
 
 autocmd Syntax c syn match cType "\h\w*_t\w\@!"
 autocmd Syntax c syn match cSpecial "\v(struct|union)@<=\s+[a-zA-Z0-9_]+"
@@ -93,7 +94,6 @@ if 1
     Plugin 'VundleVim/Vundle.vim'
     "python3 ./install.py --clangd-completer --go-completer --rust-completer --java-completer
     Plugin 'ycm-core/YouCompleteMe'
-    Plugin 'vim-syntastic/syntastic'
   call vundle#end()
 
   let g:ycm_auto_hover=-1
