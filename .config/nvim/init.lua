@@ -4,7 +4,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.cmd [[ source ~/.vimrc ]]
 
 vim.opt.list = true
-vim.opt.listchars = "trail:█"
+vim.opt.listchars = "tab:  ,trail:█"
 
 vim.cmd [[
 
@@ -26,4 +26,3 @@ vim.cmd [[ source ~/.config/nvim/coc.vim ]]
 require('lualine').setup()
 require("nvim-tree").setup()
 require('gitsigns').setup()
-
