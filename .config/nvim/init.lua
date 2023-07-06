@@ -3,6 +3,9 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.cmd [[ source ~/.vimrc ]]
 
+vim.opt.list = true
+vim.opt.listchars = "trail:█"
+
 vim.cmd [[
 
 call plug#begin()
