@@ -1,6 +1,16 @@
 {
     "semanticTokens.enable": true,
+
+    "clangd.arguments": [
+        "--header-insertion=never"
+    ],
     "clangd.compilationDatabaseCandidates": [
-        "../../",
-    ]
+        "../../"
+    ],
+
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.lens.enable": true,
+    "rust-analyzer.server.extraEnv": {
+        "CARGO_TARGET_DIR": "ide-target"
+    }
 }
