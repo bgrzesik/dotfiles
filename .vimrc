@@ -39,7 +39,12 @@ nmap <C-\> I/*<ESC>A*/<ESC>
 autocmd FileType gitcommit setlocal spell
 
 if 1
-    source /usr/share/doc/fzf/examples/fzf.vim
-    set rtp+=/usr/local/opt/fzf
+    if filereadable("/usr/share/doc/fzf/examples/fzf.vim")
+        source /usr/share/doc/fzf/examples/fzf.vim
+        set rtp+=/usr/local/opt/fzf
+    elseif filereadable("/opt/homebrew/opt/fzf/plugin/fzf.vim")
+        source /opt/homebrew/opt/fzf/plugin/fzf.vim
+        set rtp+=/opt/homebrew/opt/fzf
+    endif
     nnoremap <C-p> :FZF<CR>
 endif
