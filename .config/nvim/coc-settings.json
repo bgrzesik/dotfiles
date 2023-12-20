@@ -8,9 +8,11 @@
         "../../"
     ],
     "rust-analyzer.checkOnSave.command": "clippy",
+    "rust-analyzer.updates.checkOnStartup": false,
     "rust-analyzer.procMacro.enable": true,
     "rust-analyzer.lens.enable": true,
     "rust-analyzer.server.extraEnv": {
-        "CARGO_TARGET_DIR": "ide-target"
-    }
+        "CARGO_TARGET_DIR": ".ide-target"
+    },
+    "rust-analyzer.diagnostics.disabled": ["unresolved-proc-macro"]
 }
