@@ -37,6 +37,7 @@ noremap Q <NOP>
 nmap <C-\> I/*<ESC>A*/<ESC>
 
 autocmd FileType gitcommit setlocal spell
+autocmd FileType rust set colorcolumn=99
 
 if 1
     if filereadable("/usr/share/doc/fzf/examples/fzf.vim")

@@ -1,6 +1,9 @@
 {
+    "inlayHint.enable": true,
+    "inlayHint.display": true,
+    "inlayHint.enableParameter": true,
+    "editor.inlayHints.enabled": true,
     "semanticTokens.enable": true,
-
     "clangd.arguments": [
         "--header-insertion=never"
     ],
@@ -8,11 +11,18 @@
         "../../"
     ],
     "rust-analyzer.checkOnSave.command": "clippy",
-    "rust-analyzer.updates.checkOnStartup": false,
+    "rust-analyzer.check.extraArgs": [
+        "--tests"
+    ],
     "rust-analyzer.procMacro.enable": true,
     "rust-analyzer.lens.enable": true,
     "rust-analyzer.server.extraEnv": {
-        "CARGO_TARGET_DIR": ".ide-target"
+        "CARGO_TARGET_DIR": ".ide-target",
+		"RUSTUP_TOOLCHAIN": "nightly"
     },
-    "rust-analyzer.diagnostics.disabled": ["unresolved-proc-macro"]
+    "rust-analyzer.imports.prefix": "crate",
+    "rust-analyzer.imports.granularity.group": "item",
+    "rust-analyzer.imports.granularity.enforce": true,
+    "rust-analyzer.imports.group.enable": true,
+    "rust-analyzer.check.allTargets": true
 }
