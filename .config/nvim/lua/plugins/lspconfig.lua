@@ -21,6 +21,12 @@ return {
             return {
                 { "gh", vim.lsp.buf.hover, desc = "Hover" },
                 { "<leader>r", vim.lsp.buf.rename, desc = "Rename" },
+                {
+                    "<S-Tab>",
+                    function()
+                        vim.cmd("ClangdSwitchSourceHeader")
+                    end,
+                },
             }
         end,
     },
