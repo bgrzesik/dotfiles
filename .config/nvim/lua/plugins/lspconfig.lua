@@ -3,6 +3,7 @@ return {
         "neovim/nvim-lspconfig",
         ---@class PluginLspOpts
         opts = {
+            autoformat = false,
             setup = {
                 rust_analyzer = function()
                     return true

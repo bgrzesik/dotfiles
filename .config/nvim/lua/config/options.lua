@@ -1,3 +1,5 @@
+vim.g.autoformat = false
+
 vim.opt.mouse = "a"
 vim.opt.ttyfast = true
 vim.opt.hidden = true

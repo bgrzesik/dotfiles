@@ -3,23 +3,25 @@ return {
     opts = {
         server = {
             default_settings = {
-                checkOnSave = {
-                    command = "clippy",
-                },
-                imports = {
-                    granularity = {
-                        group = "item",
-                        enforce = true,
+                ["rust-analyzer"] = {
+                    checkOnSave = {
+                        command = "clippy",
                     },
-                    prefix = "crate",
-                },
-                cargo = {
-                    buildScripts = {
+                    imports = {
+                        granularity = {
+                            group = "item",
+                            enforce = true,
+                        },
+                        prefix = "crate",
+                    },
+                    cargo = {
+                        buildScripts = {
+                            enable = true,
+                        },
+                    },
+                    procMacro = {
                         enable = true,
                     },
-                },
-                procMacro = {
-                    enable = true,
                 },
             },
         },
