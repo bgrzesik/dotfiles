@@ -16,32 +16,12 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     spec = {
-        { "LazyVim/LazyVim", import = "lazyvim.plugins" },
         { import = "plugins" },
     },
-    defaults = {
-        lazy = false,
-        version = false,
-        keymaps = false,
-        autocmds = true,
-    },
-    install = { colorscheme = { "tokyonight", "habamax" } },
-    checker = { enabled = true },
-    performance = {
-        rtp = {
-            -- disable some rtp plugins
-            disabled_plugins = {
-                "gzip",
-                "matchit",
-                "matchparen",
-                "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-            },
-        },
-    },
+    defaults = { lazy = true },
+    checker = { enabled = false },
 })
 
+require("config/autocmds")
+require("config/options")
 require("config/keymaps")

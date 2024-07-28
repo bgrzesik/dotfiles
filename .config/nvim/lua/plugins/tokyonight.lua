@@ -4,4 +4,7 @@ return {
         style = "night",
         dim_inactive = true,
     },
+    init = function ()
+	    vim.cmd [[ colorscheme tokyonight-night ]]
+    end
 }
