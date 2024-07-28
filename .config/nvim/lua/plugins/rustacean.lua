@@ -17,7 +17,6 @@ return {
                             prefix = "crate",
                         },
                         cargo = {
-                            allFeatures = true,
                             buildScripts = {
                                 enable = true,
                             },
@@ -28,6 +27,20 @@ return {
                         },
                     },
                 },
+
+                settings = function(project_root)
+                    local ra = require("rustaceanvim.config.server")
+
+                    local vscode = ra.load_rust_analyzer_settings(project_root, {
+                        settings_file_pattern = ".vscode/settings.json"
+                    })
+
+                    local rust_analyzer = ra.load_rust_analyzer_settings(project_root, {
+                        settings_file_pattern = "rust_analyzer.json"
+                    })
+
+                    return vim.tbl_deep_extend("keep", {}, vscode, rust_analyzer)
+                end,
             },
         },
         config = function (_, opts)
