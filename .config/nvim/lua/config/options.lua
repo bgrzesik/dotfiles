@@ -1,6 +1,7 @@
 vim.g.autoformat = false
 
 vim.opt.number = true
+vim.opt.signcolumn = "yes"
 
 vim.opt.mouse = "a"
 vim.opt.ttyfast = true
