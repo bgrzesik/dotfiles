@@ -9,7 +9,8 @@ return {
             lspconfig.pyright.setup {}
 
             lspconfig.clangd.setup {
-                arguments = {
+                cmd = {
+                    "clangd",
                     "--header-insertion=never",
                 },
             }
