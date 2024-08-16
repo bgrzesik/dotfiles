@@ -3,16 +3,42 @@
 -- Use kernel style formatting and improve gf slightly
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
     pattern = {"*.c", "*.h"},
-    callback = function()
+    callback = function(args)
+        local buf = args.buf
+        local cwd = vim.fn.getcwd()
+
+        -- Kernel style formatting
         vim.opt_local.tabstop = 8
         vim.opt_local.shiftwidth = 8
         vim.opt_local.expandtab = false
 
-        vim.opt_local.path = vim.tbl_deep_extend("keep", {}, vim.opt_local.path, {
+        local include_path = {
             ".",
             "src",
             "include",
-        })
+        }
+
+        -- Scan parent directories for include directories and them to path
+        -- until reach current directory
+        for dir in vim.fs.parents(vim.api.nvim_buf_get_name(buf)) do
+            if dir == cwd then
+                -- Quit until we go too far
+                break
+            end
+
+            local inc = vim.fs.joinpath(dir, "include")
+
+            if vim.fn.isdirectory(inc) ~= 0 then
+                table.insert(include_path, inc)
+            end
+        end
+
+        vim.opt_local.path = vim.tbl_deep_extend(
+            "keep",
+            {},
+            vim.opt_local.path,
+            include_path
+        )
     end,
 })
 
@@ -31,7 +57,7 @@ vim.api.nvim_create_autocmd({"LspAttach"}, {
         for dir in vim.fs.parents(vim.api.nvim_buf_get_name(buf)) do
             local compdb = vim.fs.joinpath(dir, "compile_commands.json")
 
-            if vim.fn.filereadable(compdb) == 1 then
+            if vim.fn.filereadable(compdb) ~= 0 then
                 -- Found compile_commands.json then let clangd use it
                 return
             end
