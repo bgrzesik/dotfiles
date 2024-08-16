@@ -22,7 +22,7 @@ return {
             return {
                 { "<C-K>", builtin.buffers },
                 { "<C-/>", builtin.live_grep },
-                { "<space>/", builtin.live_grep }
+                { "<space>/", builtin.live_grep },
                 { "<C-p>", builtin.find_files },
                 { "<space>t", builtin.builtin },
                 { "<space>o", builtin.lsp_document_symbols },
