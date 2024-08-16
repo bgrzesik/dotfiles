@@ -14,4 +14,6 @@ vim.opt.expandtab = true
 vim.opt.list = true
 vim.opt.listchars = "tab:  ,trail:█"
 
+vim.opt.colorcolumn = { 80 }
+
 vim.opt.exrc = true
