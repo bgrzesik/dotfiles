@@ -68,6 +68,8 @@ vim.api.nvim_create_autocmd({"LspAttach"}, {
     end,
 })
 
+-- Run .nvim2.lua file. This allows having common file for C project
+-- and project specific exrc safely
 local exrc2_path = vim.fs.joinpath(vim.fn.getcwd(), ".nvim2.lua")
 if vim.secure.read(exrc2_path) ~= nil then
     package.path = package.path .. ";" .. exrc2_path
