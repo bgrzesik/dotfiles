@@ -8,3 +8,17 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
         vim.opt_local.expandtab = false
     end,
 })
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    pattern = "rust",
+    callback = function()
+        vim.opt_local.colorcolumn = { 99 }
+    end
+})
+
+vim.api.nvim_create_autocmd({"FileType"}, {
+    pattern = "gitcommit",
+    callback = function()
+        vim.opt_local.spell = true
+    end
+})
