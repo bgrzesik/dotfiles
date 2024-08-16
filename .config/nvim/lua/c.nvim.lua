@@ -67,3 +67,9 @@ vim.api.nvim_create_autocmd({"LspAttach"}, {
         client.stop()
     end,
 })
+
+local exrc2_path = vim.fs.joinpath(vim.fn.getcwd(), ".nvim2.lua")
+if vim.secure.read(exrc2_path) ~= nil then
+    package.path = package.path .. ";" .. exrc2_path
+    require(".nvim2.lua")
+end
