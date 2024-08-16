@@ -64,6 +64,6 @@ vim.api.nvim_create_autocmd({"LspAttach"}, {
         end
 
         -- Didn't find compile_commands.json, disable clangd for the buffer
-        vim.lsp.buf_detach_client(buf, client_id)
+        client.stop()
     end,
 })
