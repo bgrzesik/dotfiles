@@ -6,10 +6,10 @@ return {
         keywords = {
             SAFETY = { color = "hint" },
         },
-    },
-    highlight = {
-        pattern = {
-            [[.*<((KEYWORDS)\s*(\(.*\))?)\s*:]]
-        },
+        highlight = {
+            pattern = {
+                [[.*<((KEYWORDS)\s*(\(.*\))?)\s*:]]
+            },
+        },    
     },
 }
