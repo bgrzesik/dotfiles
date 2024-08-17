@@ -7,4 +7,9 @@ return {
             SAFETY = { color = "hint" },
         },
     },
+    highlight = {
+        pattern = {
+            [[.*<((KEYWORDS)\s*(\(.*\))?)\s*:]]
+        },
+    },
 }
