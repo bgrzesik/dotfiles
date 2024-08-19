@@ -4,6 +4,10 @@ return {
         event = "VeryLazy",
         main = "ibl",
         opts = {
+            indent = {
+                char = "┆",
+                tab_char = "│",
+            },
         },
     },
 }
