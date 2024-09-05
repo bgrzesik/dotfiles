@@ -43,7 +43,6 @@ local function combine_settings(project_root)
 
             if vim.fn.filereadable(name) ~= 0 then
                 table.insert(found, name)
-                print(name)
             end
         end
     end
