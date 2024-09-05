@@ -23,35 +23,42 @@ local default_settings = {
     }
 };
 
-function combine_settings(project_root)
+local function combine_settings(project_root)
     local ra = require("rustaceanvim.config.server")
+    local json = require('rustaceanvim.config.json')
     local cwd = vim.fn.getcwd()
 
-    local vscode = ra.load_rust_analyzer_settings(project_root, {
-        settings_file_pattern = ".vscode/settings.json"
-    })
+    local files = {
+        {".vscode", "settings.json"},
+        {"rust_analyzer.json"},
+    }
 
-    local vscode_cwd = ra.load_rust_analyzer_settings(cwd, {
-        settings_file_pattern = ".vscode/settings.json"
-    })
+    local paths = { cwd, project_root }
 
-    local rust_analyzer = ra.load_rust_analyzer_settings(project_root, {
-        settings_file_pattern = "rust_analyzer.json"
-    })
+    local found = {}
 
-    local rust_analyzer_cwd = ra.load_rust_analyzer_settings(cwd, {
-        settings_file_pattern = "rust_analyzer.json"
-    })
+    for _, path in ipairs(paths) do
+        for _, file in ipairs(files) do
+            local name = vim.fs.joinpath(path, unpack(file))
 
-    local combinded = vim.tbl_deep_extend(
-        "keep",
-        {},
-        default_settings,
-        vscode_cwd or {},
-        rust_analyzer_cwd or {},
-        vscode or {},
-        rust_analyzer or {}
-    )
+            if vim.fn.filereadable(name) ~= 0 then
+                table.insert(found, name)
+                print(name)
+            end
+        end
+    end
+
+    local combinded = default_settings
+
+    for _, file in ipairs(found) do
+        local f = io.open(file, "r")
+        local content = f:read("*all")
+        f:close()
+
+        local settings = vim.json.decode(content)
+
+        combinded = vim.tbl_deep_extend("keep", combinded, settings)
+    end
 
     return combinded
 end
