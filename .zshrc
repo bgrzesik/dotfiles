@@ -18,6 +18,10 @@ plugins=(git z fzf zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+if [[ -f ~/.profile ]]; then
+    . ~/.profile
+fi
+
 alias vim=nvim
 export EDITOR=nvim
 export EDITOR=nvim
