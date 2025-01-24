@@ -1,6 +1,7 @@
 return {
     {
         "neovim/nvim-lspconfig",
+        enabled = false,
         event = { "BufReadPost", "BufNewFile" },
         cmd = { "LspInfo", "LspInstall", "LspUninstall" },
         config = function (_, opts)
