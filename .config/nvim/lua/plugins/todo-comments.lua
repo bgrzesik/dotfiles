@@ -4,12 +4,15 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
         keywords = {
-            SAFETY = { color = "hint" },
+            SAFETY = {
+                color = "hint",
+                alt = { "Safety", }
+            },
         },
         highlight = {
             pattern = {
-                [[.*<((KEYWORDS)\s*(\(.*\))?)\s*:]]
+                [[.*<((KEYWORDS)\s*(\(.*\))?)\s*:]],
             },
-        },    
+        },
     },
 }
