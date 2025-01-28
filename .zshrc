@@ -18,10 +18,43 @@ plugins=(git z fzf zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+function android_lunch_prompt() {
+    if [[ -z "$ANDROID_BUILD_TOP" ]]; then
+        return 0
+    fi
+
+    local LUNCH="lunch: $TARGET_PRODUCT-$TARGET_BUILD_VARIANT"
+
+    echo -n "%{$fg[red]%}"
+    echo -n "$LUNCH"
+    echo -n "%{$reset_color%} "
+}
+
+function adb_prompt() {
+    if [[ -z "$ANDROID_SERIAL" ]]; then
+        return 0
+    fi
+
+    local ADB="adb: $ANDROID_SERIAL"
+
+    echo -n "%{$fg[green]%}"
+    echo -n "$ADB"
+    echo -n "%{$reset_color%} "
+}
+
+function custom_prompt() {
+    android_lunch_prompt
+    adb_prompt
+}
+
+# I don't use Merculiar
+function hg_prompt_info() {
+    custom_prompt
+}
+
 if [[ -f ~/.profile ]]; then
     . ~/.profile
 fi
 
 alias vim=nvim
-export EDITOR=nvim
 export EDITOR=nvim
