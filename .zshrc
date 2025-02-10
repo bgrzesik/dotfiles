@@ -35,7 +35,18 @@ function adb_prompt() {
         return 0
     fi
 
-    local ADB="adb: $ANDROID_SERIAL"
+    local ADB_DEVICE=`adb devices -l | grep $ANDROID_SERIAL`
+    local ADB_SUFFIX=""
+
+    if [[ -z "$ADB_DEVICE" ]]; then
+        ADB_SUFFIX="(disconnected)"
+    elif [[ ! -z `echo $ADB_DEVICE | grep offline` ]]; then
+        ADB_SUFFIX="(offline)"
+    else
+        ADB_SUFFIX=`echo $ADB_DEVICE | grep -Eoh 'product:(\w+)'`
+    fi
+
+    local ADB="adb: $ANDROID_SERIAL $ADB_SUFFIX"
 
     echo -n "%{$fg[green]%}"
     echo -n "$ADB"
