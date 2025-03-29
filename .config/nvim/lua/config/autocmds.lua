@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd({"FileType"}, {
     pattern = "rust",
     callback = function()
         vim.opt_local.colorcolumn = { 99 }
-        vim.lsp.inlay_hint.enable(true)
     end
 })
 

@@ -62,6 +62,10 @@ local function combine_settings(project_root)
     return combinded
 end
 
+local function on_attach(client, bufnr)
+    vim.lsp.inlay_hint.enable(true)
+end
+
 return {
     {
         "mrcjkb/rustaceanvim",
@@ -74,6 +78,7 @@ return {
                 },
                 server = {
                     settings = combine_settings,
+                    on_attach = on_attach,
                 },
             }
         end,

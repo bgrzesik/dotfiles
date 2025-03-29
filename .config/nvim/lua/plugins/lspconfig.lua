@@ -1,15 +1,22 @@
+
+local function on_attach()
+    vim.lsp.inlay_hint.enable(true)
+end
+
 return {
     {
         "neovim/nvim-lspconfig",
-        enabled = false,
         event = { "BufReadPost", "BufNewFile" },
         cmd = { "LspInfo", "LspInstall", "LspUninstall" },
         config = function (_, opts)
             local lspconfig = require("lspconfig")
 
-            lspconfig.pyright.setup {}
+            lspconfig.pyright.setup {
+                on_attach,
+            }
 
             lspconfig.clangd.setup {
+                on_attach,
                 cmd = {
                     "clangd",
                     "--header-insertion=never",
