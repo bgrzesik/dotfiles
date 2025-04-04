@@ -8,6 +8,7 @@ return {
                 rust = { "rustfmt", lsp_format = "fallback" },
                 cpp = { "clang-format" },
                 c = { "clang-format" },
+                bp = { "bpfmt" },
             },
         },
         keys = {
@@ -18,5 +19,8 @@ return {
                 end,
             },
         },
+        init = function()
+            vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        end,
     }
 }
