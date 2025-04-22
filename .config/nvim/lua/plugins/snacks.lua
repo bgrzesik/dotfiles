@@ -14,7 +14,7 @@ return {
             git = { enabled = true },
             explorer = {
                 enabled = true,
-                replace_netrw = true,
+                replace_netrw = false,
             },
             indent = { enabled = true },
             input = { enabled = true },
