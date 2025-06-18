@@ -44,12 +44,6 @@ return {
         keys = function()
             return {
                 {
-                    "<C-t>",
-                    function()
-                        Snacks.explorer()
-                    end,
-                },
-                {
                     "<space>/",
                     function()
                         Snacks.picker.grep({ hidden = true })
@@ -62,9 +56,33 @@ return {
                     end,
                 },
                 {
-                    "<C-\\>",
+                    "<space>r",
                     function()
                         Snacks.picker.recent()
+                    end,
+                },
+                {
+                    "<space>a",
+                    function()
+                        Snacks.picker.files({
+                            hidden = true,
+                            dirs = { "arch/arm64/kvm" },
+                        })
+                    end,
+                },
+                {
+                    "<space>A",
+                    function()
+                        Snacks.picker.grep({
+                            hidden = true,
+                            dirs = { "arch/arm64/kvm" },
+                        })
+                    end,
+                },
+                {
+                    "<space>p",
+                    function()
+                        Snacks.picker.pickers()
                     end,
                 },
                 {
