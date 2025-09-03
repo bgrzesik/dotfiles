@@ -9,3 +9,4 @@ vim.keymap.set({ "n", "v" }, "<C-f>", function()
     LazyVim.format({ force = true })
 end)
 
+vim.keymap.set({ "t" }, "<ESC>", "<C-\\><C-n>")
