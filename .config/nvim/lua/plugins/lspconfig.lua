@@ -9,19 +9,23 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         cmd = { "LspInfo", "LspInstall", "LspUninstall" },
         config = function (_, opts)
-            local lspconfig = require("lspconfig")
+            local lsp = vim.lsp;
 
-            lspconfig.pyright.setup {
+            lsp.config("pyright",  {
                 on_attach,
-            }
+            })
+            lsp.enable("pyright")
 
-            lspconfig.clangd.setup {
+            lsp.config("clangd", {
                 on_attach,
                 cmd = {
                     "clangd",
                     "--header-insertion=never",
                 },
-            }
+            })
+            lsp.enable("clangd")
+
+            lsp.enable("ts_ls")
         end,
         keys = function()
             return {

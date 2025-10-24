@@ -5,6 +5,7 @@ return {
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "black" },
+                javascript = { lsp_format = "fallback" },
                 rust = { "rustfmt", lsp_format = "fallback" },
                 cpp = { "clang-format" },
                 c = { "clang-format" },
