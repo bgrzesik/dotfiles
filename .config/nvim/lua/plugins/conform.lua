@@ -10,6 +10,7 @@ return {
                 cpp = { "clang-format" },
                 c = { "clang-format" },
                 bp = { "bpfmt" },
+                systemverilog = { "verible" },
             },
         },
         keys = {

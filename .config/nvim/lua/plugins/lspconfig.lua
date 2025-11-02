@@ -26,6 +26,8 @@ return {
             lsp.enable("clangd")
 
             lsp.enable("ts_ls")
+
+            lsp.enable("verible")
         end,
         keys = function()
             return {
