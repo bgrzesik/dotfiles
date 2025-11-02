@@ -7,6 +7,7 @@ vim.opt.mouse = "a"
 vim.opt.ttyfast = true
 vim.opt.hidden = true
 vim.opt.undofile = true
+vim.opt.wrap = false
 
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
