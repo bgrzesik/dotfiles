@@ -6,6 +6,8 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
         vim.opt_local.tabstop = 8
         vim.opt_local.shiftwidth = 8
         vim.opt_local.expandtab = false
+
+        vim.diagnostic.enable(false)
     end,
 })
 
