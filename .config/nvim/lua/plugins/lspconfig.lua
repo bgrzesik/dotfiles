@@ -3,6 +3,13 @@ local function on_attach()
     vim.lsp.inlay_hint.enable(true)
 end
 
+local function clangd_on_attach(client)
+    on_attach()
+
+    client.server_capabilities.semanticTokensProvider = nil
+    vim.lsp.inlay_hint.enable(false)
+end
+
 return {
     {
         "neovim/nvim-lspconfig",
@@ -17,7 +24,7 @@ return {
             lsp.enable("pyright")
 
             lsp.config("clangd", {
-                on_attach,
+                clangd_on_attach,
                 cmd = {
                     "clangd",
                     "--header-insertion=never",
