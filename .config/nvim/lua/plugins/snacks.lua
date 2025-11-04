@@ -21,6 +21,13 @@ return {
             picker = {
                 enabled = true,
                 ui_select = true,
+                exclude = {
+                    "out/**/*",
+                    ".cache/**/*",
+                    ".repo/**/*",
+                    ".git/**/*",
+                    "prebuilts/**/*",
+                },
                 files = {
                     hidden = true,
                 },
