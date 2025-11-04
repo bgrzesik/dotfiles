@@ -62,6 +62,12 @@ return {
                     end,
                 },
                 {
+                    "<space>e",
+                    function()
+                        Snacks.picker.explorer()
+                    end,
+                },
+                {
                     "<space>a",
                     function()
                         Snacks.picker.files({
