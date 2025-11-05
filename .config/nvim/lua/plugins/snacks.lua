@@ -27,6 +27,7 @@ return {
                     ".repo/**/*",
                     ".git/**/*",
                     "prebuilts/**/*",
+                    "build-root/**/*",
                 },
                 files = {
                     hidden = true,
