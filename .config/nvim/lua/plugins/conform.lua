@@ -12,6 +12,7 @@ return {
                 bp = { "bpfmt" },
                 bzl = { "buildifier" },
                 systemverilog = { "verible" },
+                verilog = { "verible" },
             },
         },
         keys = {
