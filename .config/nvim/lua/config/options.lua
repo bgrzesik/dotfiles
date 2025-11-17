@@ -18,3 +18,5 @@ vim.opt.listchars = "tab:  ,trail:█"
 vim.opt.colorcolumn = { 80 }
 
 vim.opt.exrc = true
+
+vim.g.netrw_list_hide = "^\\(\\..*\\)\\|\\(.*\\.o\\)$"
