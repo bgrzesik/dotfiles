@@ -53,7 +53,16 @@ function adb_prompt() {
     echo -n "%{$reset_color%} "
 }
 
+function prompt_static_string() {
+    if [[ -z "$BGRZESIK_STATIC_PROMPT" ]]; then
+        return 0
+    fi
+
+    echo -n "$BGRZESIK_STATIC_PROMPT "
+}
+
 function custom_prompt() {
+    prompt_static_string
     android_lunch_prompt
     adb_prompt
 }
