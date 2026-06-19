@@ -1,28 +1,31 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
         lazy = false,
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = {
-                    "bp",
-                    "c",
-                    "cpp",
-                    "rust",
-                    "lua",
-                    "vim",
-                    "vimdoc",
-                    "query",
-                    "markdown",
-                    "markdown_inline",
-                },
-                highlight = {
-                    enable = true,
-                },
-            })
+        init = function()
+            local ensure_installed = {
+                "bp",
+                "c",
+                "cpp",
+                "rust",
+                "lua",
+                "vim",
+                "vimdoc",
+                "query",
+                "markdown",
+                "markdown_inline",
+            }
+
+            local installed = require('nvim-treesitter.config').get_installed()
+            local missing = vim.iter(ensure_installed)
+                :filter(function(parser)
+                        return not vim.tbl_contains(installed, parser)
+                end)
+                :totable()
+
+            require('nvim-treesitter').install(missing)
         end,
-        build = function()
-            require("nvim-treesitter.install").update({ with_sync = true })()
-        end,
+        build = ":TSUpdate",
     },
 }
